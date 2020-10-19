@@ -1,13 +1,14 @@
 import { AppLoading } from "expo";
-import React, {useState} from 'react';
-import { StyleSheet, View, Image } from 'react-native';
-import RestaurantsScreen from './screens/RestaurantsScreen'
-import ProfileScreen from './screens/ProfileScreen'
-import TestingScreen from './screens/TestingScreen'
+import React, { useState } from "react";
+import { StyleSheet, View, Image } from "react-native";
+import RestaurantsScreen from "./screens/RestaurantsScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+import TestingScreen from "./screens/TestingScreen";
 import * as Font from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import RestaurantLogo from "./assets/media/fork.svg";
+import RestaurantLogo from "./components/RestaurantLogo";
+import ProfileLogo from "./components/ProfileLogo";
 
 // all the init happens here
 // later make it a logo display with bg tasks happening
@@ -16,11 +17,11 @@ import RestaurantLogo from "./assets/media/fork.svg";
 
 const getFonts = () =>
   Font.loadAsync({
-    "bold": require("./assets/fonts/Montserrat-Bold.ttf"),
-    "italic": require("./assets/fonts/Montserrat-Italic.ttf"),
-    "regular": require("./assets/fonts/Montserrat-Regular.ttf"),
-    "semiBold": require("./assets/fonts/Montserrat-SemiBold.ttf"),
-    "thin": require("./assets/fonts/Montserrat-Thin.ttf"),
+    bold: require("./assets/fonts/Montserrat-Bold.ttf"),
+    italic: require("./assets/fonts/Montserrat-Italic.ttf"),
+    regular: require("./assets/fonts/Montserrat-Regular.ttf"),
+    semiBold: require("./assets/fonts/Montserrat-SemiBold.ttf"),
+    thin: require("./assets/fonts/Montserrat-Thin.ttf"),
   });
 
 const Tab = createBottomTabNavigator();
@@ -35,19 +36,14 @@ export default function App() {
           <Tab.Navigator
             screenOptions={({ route }) => ({
               tabBarIcon: ({ focused, color, size }) => {
-
                 switch (route.name) {
                   case "RestaurantsScreen":
-                    break;
+                    return <RestaurantLogo color={color} />;
                   case "ProfileScreen":
-                    break;
+                    return <ProfileLogo color={color} />;
                   case "TestingScreen":
                     break;
                 }
-                return (
-                  <Image source={require("./assets/media/favicon.png")} style={{width: 25, height: 25}}/>
-                );
-                
               },
             })}
             tabBarOptions={{
@@ -57,7 +53,10 @@ export default function App() {
               },
             }}
           >
-            <Tab.Screen name="RestaurantsScreen" component={RestaurantsScreen} />
+            <Tab.Screen
+              name="RestaurantsScreen"
+              component={RestaurantsScreen}
+            />
             <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
             <Tab.Screen name="TestingScreen" component={TestingScreen} />
           </Tab.Navigator>

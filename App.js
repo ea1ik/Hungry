@@ -7,8 +7,8 @@ import TestingScreen from "./screens/TestingScreen";
 import * as Font from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import RestaurantLogo from "./components/RestaurantLogo";
-import ProfileLogo from "./components/ProfileLogo";
+import RestaurantLogo from "./logos/RestaurantLogo";
+import ProfileLogo from "./logos/ProfileLogo";
 
 // all the init happens here
 // later make it a logo display with bg tasks happening

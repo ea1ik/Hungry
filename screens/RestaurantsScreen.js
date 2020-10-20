@@ -10,7 +10,7 @@ class RestaurantsScreen extends Component {
     render() {
         return (
             <View style = {styles.container}>
-                <Text style = {{fontFamily: "regular"}}>Restaurant Screen</Text>
+                <Text style = {styles.largeFont}>Restaurant Screen</Text>
             </View>
         );
     }
@@ -23,5 +23,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center"
+    },
+    largeFont:{
+        fontFamily: "regular"
     }
 })

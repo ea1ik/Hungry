@@ -35,14 +35,14 @@ class App extends React.Component {
      };
   }
   render() {
-    // if (!this.state.fontsLoaded) {
-    //   return (
-    //     <AppLoading
-    //       startAsync={preload}
-    //       onFinish={() => this.setState({fontsLoaded: true})}
-    //     />
-    //   );
-    // }
+    if (!this.state.fontsLoaded) {
+      return (
+        <AppLoading
+          startAsync={preload}
+          onFinish={() => this.setState({fontsLoaded: true})}
+        />
+      );
+    }
   
     return (
       <View style={styles.container}>

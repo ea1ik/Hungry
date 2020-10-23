@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, Text } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import SwipingCard from "../components/SwipingCard";
 
@@ -32,8 +32,18 @@ const data = [
 ];
 
 const Card = ({ card }) => (
-  <View style = {{flex: 0.5, justifyContent: "center", alignItems: "center", backgroundColor: "red"}}>
-    <Image source={card.uri} style = {{width: "100%", height: "100%", resizeMode: "contain"}}></Image>
+  <View
+    style={{
+      flex: 0.5,
+      justifyContent: "center",
+      alignItems: "center",
+    //   backgroundColor: "red",
+    }}
+  >
+    <Image
+      source={card.uri}
+      style={{ width: "100%", height: "100%", resizeMode: "contain" }}
+    ></Image>
   </View>
 );
 
@@ -52,7 +62,61 @@ class RestaurantsScreen extends Component {
           cards={data}
           cardIndex={this.state.currentIndex}
           renderCard={(card) => <Card card={card} />}
+          onSwiped={() => this.state.currentIndex = (this.state.currentIndex + 1) % data.length} // gets current card
+          stackSize = {3}
+          stackScale = {3}
+          stackSeparation = {3}
           backgroundColor="transparent"
+          infinite
+          disableBottomSwipe
+          disableTopSwipe
+          animateCardOpacity
+          animateOverlayLabelsOpacity
+          //TODO CHANGE OPACITY SETTINGS
+          overlayLabels={
+            {
+                left: {
+                  title: 'NOPE',
+                  style: {
+                    label: {
+                      backgroundColor: 'black',
+                      borderColor: 'black',
+                      color: 'white',
+                      borderWidth: 1,
+                      fontSize: 20,
+                      fontFamily: "regular",
+                    },
+                    wrapper: {
+                      flexDirection: 'column',
+                      alignItems: 'flex-end',
+                      justifyContent: 'flex-start',
+                      marginTop: 100,
+                      marginLeft: -30
+                    }
+                  }
+                },
+                right: {
+                  title: 'LIKE',
+                  style: {
+                    label: {
+                      backgroundColor: 'black',
+                      borderColor: 'black',
+                      color: 'white',
+                      borderWidth: 1,
+                      fontSize: 20,
+                      fontFamily: "regular"
+                    },
+                    wrapper: {
+                      flexDirection: 'column',
+                      alignItems: 'flex-start',
+                      justifyContent: 'flex-start',
+                      marginTop: 100,
+                      marginLeft: 30
+                    }
+                  }
+                },
+              }
+          }
         />
       </View>
     );

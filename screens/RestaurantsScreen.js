@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import SwipingCard from "../components/SwipingCard";
 
@@ -32,8 +32,8 @@ const data = [
 ];
 
 const Card = ({ card }) => (
-  <View>
-    <Image src={card.uri}></Image>
+  <View style = {{flex: 0.5, justifyContent: "center", alignItems: "center", backgroundColor: "red"}}>
+    <Image source={card.uri} style = {{width: "100%", height: "100%", resizeMode: "contain"}}></Image>
   </View>
 );
 
@@ -52,6 +52,7 @@ class RestaurantsScreen extends Component {
           cards={data}
           cardIndex={this.state.currentIndex}
           renderCard={(card) => <Card card={card} />}
+          backgroundColor="transparent"
         />
       </View>
     );
